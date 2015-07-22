@@ -114,7 +114,20 @@
         this.runningWordFrequencyGenerator = true;
         // console.log("runWordFrequencyGenerator");
         this.wordFrequencies = null;
+        this.cloudType = null;
         LexemeFrequency.calculateNonContentWords(this); /* TODO decide if this should be calculateNonContentWords */
+        /* TODO check the length of the cloud, if length is x */
+        var x = this.wordFrequencies.length;
+
+        if (15 > x && x < 100) {
+          this.cloudType = 'word cloud';
+        }
+        if (x < 15) {
+          this.cloudType = 'tag cloud';
+        }
+        if (x > 100) {
+          this.cloudType = 'ilanguage cloud';
+        }
         this.runningWordFrequencyGenerator = false;
         return this;
       }
